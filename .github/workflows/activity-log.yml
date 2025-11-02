@@ -18,14 +18,25 @@ jobs:
       - uses: actions/checkout@v4
 
       # 使用 TheDanniCraft/activity-log action
-      - uses: TheDanniCraft/activity-log@v1
+# ... (前面內容不變)
+
+      # 使用 TheDanniCraft/activity-log@v1 action
+      - uses: TheDanniCraft/activity-log@v1 
         with:
-          # 傳入 Step B 建立的 Secret TOKEN
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          # 預設的日誌標題
-          log_title: '我的最新活動'
-          # 選擇性：指定要拉取活動的組織或使用者，預設為程式庫擁有者
-          # user_id: '您的GitHub使用者名稱' 
+          # ⚠️ 1. 新增必要的 GITHUB_USERNAME
+          GITHUB_USERNAME: YOUR_GITHUB_USERNAME 
+          
+          # 2. 移除 log_title (因為它不再支援)
+          # GITHUB_TOKEN 是正確的，用於授權 API 存取
+          GITHUB_TOKEN: ${{ secrets.TOKEN }} 
+          
+          # 3. [O 等級強化 - 選用] 客製化提交訊息
+          COMMIT_MESSAGE: "🤖 docs: 更新自動活動日誌 by Actions"
+          
+          # 4. [O 等級強化 - 選用] 設定要顯示的活動數量 (預設 100)
+          EVENT_LIMIT: 10 
+          
+# ... (後面內容不變)
 
       - name: Commit and Push Update
         run: |
