@@ -1,0 +1,41 @@
+name: Update Activity Log
+
+on:
+  # 每天 UTC 00:00 執行一次 (排程強化點之一)
+  schedule:
+    - cron: '0 0 * * *'
+  # 也可以在每次 push 後執行 (用於測試)
+  # push:
+  #   branches:
+  #     - main
+  # 手動觸發
+  workflow_dispatch:
+
+jobs:
+  update-log:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # 使用 TheDanniCraft/activity-log action
+      - uses: TheDanniCraft/activity-log@v1.0.1
+        with:
+          # 傳入 Step B 建立的 Secret TOKEN
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          # 預設的日誌標題
+          log_title: '我的最新活動'
+          # 選擇性：指定要拉取活動的組織或使用者，預設為程式庫擁有者
+          # user_id: '您的GitHub使用者名稱' 
+
+      - name: Commit and Push Update
+        run: |
+          # 檢查是否有變更
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git add README.md
+            git commit -m "🤖 docs: Auto update activity log [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi
