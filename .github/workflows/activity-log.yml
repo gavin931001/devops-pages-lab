@@ -24,7 +24,7 @@ jobs:
       - uses: TheDanniCraft/activity-log@v1 
         with:
           # ⚠️ 1. 新增必要的 GITHUB_USERNAME
-          GITHUB_USERNAME: YOUR_GITHUB_USERNAME 
+          GITHUB_USERNAME: gavin931001
           
           # 2. 移除 log_title (因為它不再支援)
           # GITHUB_TOKEN 是正確的，用於授權 API 存取
