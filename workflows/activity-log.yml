@@ -5,9 +5,9 @@ on:
   schedule:
     - cron: '0 0 * * *'
   # 也可以在每次 push 後執行 (用於測試)
-  # push:
-  #   branches:
-  #     - main
+   push:
+     branches:
+       - main
   # 手動觸發
   workflow_dispatch:
 
