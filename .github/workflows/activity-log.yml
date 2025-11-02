@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
 
       # 使用 TheDanniCraft/activity-log action
-      - uses: TheDanniCraft/activity-log@v1.0.1
+      - uses: TheDanniCraft/activity-log@v1
         with:
           # 傳入 Step B 建立的 Secret TOKEN
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
