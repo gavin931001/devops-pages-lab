@@ -13,7 +13,9 @@
 ## 🤖 GitHub 專案活動記錄
 
 以下區塊的內容將由 GitHub Actions 自動更新。
-""
+<!--START_SECION:activity-->
+
+<!--END_SECION:activity-->
 ---
 
 ## 網站存取資訊
